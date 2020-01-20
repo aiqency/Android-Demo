@@ -1,7 +1,6 @@
 package com.aiqency.tmdb
 
 import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.IdlingRegistry
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
 import androidx.test.espresso.intent.Intents.intended
@@ -10,10 +9,13 @@ import androidx.test.espresso.intent.rule.IntentsTestRule
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.aiqency.tmdb.activity.detail.DetailActivity
+import com.aiqency.tmdb.activity.main.presenter.MovieRepositoryInterface
 import com.aiqency.tmdb.activity.main.view.MainActivity
 import com.aiqency.tmdb.activity.main.view.adapters.MoviesAdapter
 import com.aiqency.tmdb.realms.realmTransaction
-import org.junit.*
+import org.junit.AfterClass
+import org.junit.Rule
+import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mockito.atLeastOnce
 import org.mockito.Mockito.verify
@@ -30,7 +32,6 @@ class MockMainActivityTest {
     val activityRule = IntentsTestRule(MainActivity::class.java)
 
     private val activity by lazy { activityRule.activity }
-    private val idlingRegistry by lazy { IdlingRegistry.getInstance() }
 
     companion object {
 
@@ -41,18 +42,8 @@ class MockMainActivityTest {
         
     }
 
-    @Before
-    fun before(){
-        idlingRegistry.register(activity.countingIdlingResource)
-    }
-
-    @After
-    fun after(){
-        idlingRegistry.unregister(activity.countingIdlingResource)
-    }
-
     /**
-     * Ensure the testSuite is set correctly
+     * Ensure the mocking of the [MovieRepositoryInterface] is set correctly
      */
     @Test
     fun testMock(){

@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityOptionsCompat
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import androidx.test.espresso.idling.CountingIdlingResource
 import com.aiqency.tmdb.App
 import com.aiqency.tmdb.R
 import com.aiqency.tmdb.activity.detail.DetailActivity
@@ -22,8 +21,6 @@ import javax.inject.Inject
 
 
 class MainActivity : AppCompatActivity(), MainMPVInterface.View {
-
-    val countingIdlingResource: CountingIdlingResource by lazy { CountingIdlingResource("RV") }
 
     @Inject
     lateinit var presenter: MainMPVInterface.Presenter
@@ -45,18 +42,13 @@ class MainActivity : AppCompatActivity(), MainMPVInterface.View {
 
 
     private fun setUpRecyclerView() {
-        countingIdlingResource
-            .apply {
-                increment()
-                rv?.apply {
-                    itemAnimator = null
-                    layoutManager = StaggeredGridLayoutManager(2, RecyclerView.VERTICAL)
-                    adapter = MoviesAdapter(presenter.getLiveMovies()) { (id, img) -> onMovieCLicked(id, img) }
-                    addItemDecoration(ItemOffsetDecoration(4))
-                    addOnScrollListener(scrollListener)
-                }
-                decrement()
-            }
+        rv?.apply {
+            itemAnimator = null
+            layoutManager = StaggeredGridLayoutManager(2, RecyclerView.VERTICAL)
+            adapter = MoviesAdapter(presenter.getLiveMovies()) { (id, img) -> onMovieCLicked(id, img) }
+            addItemDecoration(ItemOffsetDecoration(4))
+            addOnScrollListener(scrollListener)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
