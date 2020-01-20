@@ -9,6 +9,8 @@
 * [Espresso](https://developer.android.com/training/testing/espresso) - Android UI tests
 * [Mockito](https://site.mockito.org/) - Mocking framework
 
+## CI
+* [Circleci](https://circleci.com/) - Continuous integration
 
 Four hours implementation demo
 
