@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:showIn="@layout/activity_detail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
+        tools:context=".activity.detail.DetailActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintGuide_begin="16dp"
+                android:orientation="vertical" />
+
+        <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintGuide_end="16dp"
+                android:orientation="vertical" />
+
+        <TextView
+                android:id="@+id/title_baseline"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="44dp"
+                android:textSize="0sp"
+                android:visibility="invisible"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+                android:id="@+id/m_title"
+                android:text="test"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorAccent"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                app:layout_constraintBaseline_toBaselineOf="@id/title_baseline"
+                app:layout_constraintStart_toStartOf="@id/start"
+                app:layout_constraintEnd_toEndOf="@id/end"/>
+
+        <TextView
+                android:id="@+id/content"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:text="@string/action_settings"
+                android:layout_marginTop="16dp"
+                app:layout_constraintStart_toStartOf="@id/start"
+                app:layout_constraintEnd_toEndOf="@id/end"
+                app:layout_constraintTop_toBottomOf="@id/m_title"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</androidx.core.widget.NestedScrollView>
