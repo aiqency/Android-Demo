@@ -1,5 +1,3 @@
-[![CircleCI](https://circleci.com/gh/aiqency/Android-Demo.svg?style=svg)](https://circleci.com/gh/aiqency/Android-Demo)
-
 # Infinite recyclerview pulling movies from TMDb
 
 * [Realm](https://realm.io/blog/realm-for-android/) - Persistence layer
